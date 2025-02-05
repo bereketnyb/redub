@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -10,7 +12,7 @@ const PhotoList = () => {
         const fetchPhotos = async () => {
             try {
                 const response = await axios.get('https://jsonplaceholder.typicode.com/photos');
-                setPhotos(response.data);
+                setPhotos(response.data.slice(0, 20));
             } catch (err) {
                 setError('Error fetching data.');
                 console.error("Error fetching photos:", err);
